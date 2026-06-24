@@ -1,0 +1,10 @@
+REQUIREMENTS
+------------
+JOB PORTAL
+
+USER - Login/Register/See the job posts/He can apply/tract his application/job profile
+
+RECRUITER - Login/Register/View the candidates/filter with skills/POST the jobs/shortlist
+
+ADMIN - verify the user/recruiter(company)
+
