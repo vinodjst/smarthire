@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
 
  defaults:
-      run:
-        working-directory: ./smarthire
+    run:
+      working-directory: ./smarthire
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
