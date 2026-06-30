@@ -61,7 +61,7 @@ public class UserController {
 
         System.out.println("fetching all users.....");
 
-        return "user list";
+        return "user list is here";
     }
 
 
