@@ -1,41 +1,32 @@
 package com.job.smarthire.controller;
 
-
 /*
  * Annotations
- * class level  - @Controller(@Responsebody) or @Restcontroller
- * class/method level()  - @RequestMapping,("/user")
- * Method level(request types) -  @GetMapping("/getUser"),@PostMapping("/add"),@PutMapping,@DeleteMapping,@PathMapping
- * Method params(payload) - @RequestParam,@PathVariable,@RequestBody
+ * class level  - @Controller(@Responsebody) or @Restcontroller   -- DONE
+ * class/method level()  - @RequestMapping,("/user")  -- DONE
+ * Method level(request types) -  @GetMapping("/getUser"),@PostMapping("/add"),@PutMapping,@DeleteMapping,@PathMapping(x)
+ * Method params(payload) - @RequestParam(x),@PathVariable,@RequestBody
  * validation - @valid,@validate
  * */
-
 import com.job.smarthire.dtos.UserRequestDto;
+import com.job.smarthire.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-    //save the user into database - POST
-    //Update user - PUT
-    //DELETE - DELETE
-    //GET - fetchAll/fetchById/
+
+    @Autowired    //inject the object
+    UserService userService; //Dependency injection
+
+
     @PostMapping("/add")
-    public String addUser(@RequestBody @Valid  UserRequestDto requestDto) {
+    public String addUser(@RequestBody @Valid UserRequestDto requestDto) {
 
-        //validate the request   - validation on UserRequestDto
-        //@NotNull
-        //@NotBlank
-        //@Email
-        //@min @max
-
-        System.out.println(requestDto);
-        System.out.println("fetching email address from requestDTO");
-
-        System.out.println("Saving the data into database.....");
-
+        userService.saveUser(requestDto);
         return "User added successfully";
     }
 
@@ -49,15 +40,15 @@ public class UserController {
     }
 
     @DeleteMapping("/remove/{id}")
-    public String removeUser(@PathVariable(name = "id") long userId){
+    public String removeUser(@PathVariable(name = "id") long userId) {
 
         System.out.println("removing the user....");
 
-       return "user removed successfully";
+        return "user removed successfully";
     }
 
     @GetMapping("/fetchAll")
-    public String getAllUsers(){
+    public String getAllUsers() {
 
         System.out.println("fetching all users.....");
 
@@ -65,16 +56,13 @@ public class UserController {
     }
 
 
-
-
     @GetMapping("/fetch/{id}")
-    public String getUser(@PathVariable(name = "id") long userId){
+    public String getUser(@PathVariable(name = "id") long userId) {
 
-        System.out.println("fetching the user ..... "+ userId);
+        System.out.println("fetching the user ..... " + userId);
 
         return "user details";
     }
-
 
 
 }
