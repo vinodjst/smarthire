@@ -1,30 +1,18 @@
-package com.job.smarthire.entity;
+package com.job.smarthire.dtos;
 
-import jakarta.persistence.*;
+public class UserResponseDto {
 
-@Entity
-@Table(name = "user")
-public class UserEntity {
+    private long id;
+    private String name;
+    private String email;
+    private long mobile;
+    private String password;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
-
-   @Column(name = "username")
-   private String name;
-
-   private String email;
-
-   private long mobile;
-
-   private String password;
-
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

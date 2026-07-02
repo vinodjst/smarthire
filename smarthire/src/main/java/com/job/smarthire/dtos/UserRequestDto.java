@@ -1,14 +1,20 @@
 package com.job.smarthire.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 public class UserRequestDto {
 
-    @NotBlank(message = "name should not be blank")
+    @NotBlank(message = "Name should not be blank")
     private String name;
-    @NotBlank
+    @NotBlank(message = "Email should not be blank")
+    @Email(message = "Enter a valid email")
     private String email;
+    @Min(value = 10)
     private long mobile;
+    @NotBlank(message = "password should not be blank")
     private String password;
 
     public String getName() {
